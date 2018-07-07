@@ -21,7 +21,7 @@ import com.brownfield.pss.book.repository.BookingRepository;
 import com.brownfield.pss.book.repository.InventoryRepository;
 
 @SpringBootApplication
-@EnableDiscoveryClient
+@EnableDiscoveryClient // to fetch values from client
 public class Application implements CommandLineRunner{
 	private static final Logger logger = LoggerFactory.getLogger(Application.class);
 	@Autowired

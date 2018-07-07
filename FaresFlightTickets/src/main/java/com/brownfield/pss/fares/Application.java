@@ -16,6 +16,7 @@ import com.brownfield.pss.fares.entity.Fare;
 import com.brownfield.pss.fares.repository.FaresRepository;
 
 @SpringBootApplication
+@EnableDiscoveryClient
 public class Application implements CommandLineRunner {
 	private static final Logger logger = LoggerFactory.getLogger(Application.class);
 

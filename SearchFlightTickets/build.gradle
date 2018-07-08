@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '2.0.3.RELEASE'
+		springBootVersion = '2.1.0.BUILD-SNAPSHOT'
 	}
 	repositories {
 		mavenCentral()
@@ -34,11 +34,12 @@ jar {
 }
 
 ext {
-	springCloudVersion = 'Finchley.RELEASE'
+	springCloudVersion = 'Finchley.BUILD-SNAPSHOT'
 }
 
 dependencies {
 	compile('org.springframework.cloud:spring-cloud-starter-config') //makes it client
+	compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
 	compile('com.oracle:ojdbc:1.6')
 	runtime('com.oracle:ojdbc:1.6')
 	compile('org.springframework.boot:spring-boot-starter-web')

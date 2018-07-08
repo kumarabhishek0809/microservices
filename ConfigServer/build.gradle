@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '2.0.3.RELEASE'
+		springBootVersion = '2.1.0.BUILD-SNAPSHOT'
 	}
 	repositories {
 		mavenCentral()
@@ -33,13 +33,14 @@ repositories {
 
 
 ext {
-	springCloudVersion = 'Finchley.RELEASE'
+	springCloudVersion = 'Finchley.BUILD-SNAPSHOT'
 }
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.cloud:spring-cloud-config-server') // this makes it server
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
 }
 
 dependencyManagement {

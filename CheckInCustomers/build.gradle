@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '2.0.3.RELEASE'
+		springBootVersion = '2.1.0.BUILD-SNAPSHOT'
 	}
 	repositories {
 		mavenCentral()
@@ -34,11 +34,12 @@ jar {
 }
 
 ext {
-	springCloudVersion = 'Finchley.RELEASE'
+	springCloudVersion = 'Finchley.BUILD-SNAPSHOT'
 }
 
 dependencies {
 	compile('org.springframework.cloud:spring-cloud-starter-config')
+	
 	compile('com.oracle:ojdbc:1.6')
 	runtime('com.oracle:ojdbc:1.6')
 	compile('org.springframework.data:spring-data-rest-hal-browser:2.6.3.RELEASE')
@@ -48,6 +49,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-hateoas')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.cloud:spring-cloud-starter-eureka')
+	compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
 	compile('org.springframework.boot:spring-boot-starter-web-services')
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	testCompile('org.springframework.boot:spring-boot-starter-test')

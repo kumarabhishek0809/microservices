@@ -1,11 +1,11 @@
 package com.brownfield.pss.book.component;
 
-import com.brownfield.pss.book.controller.Sender;
-import com.brownfield.pss.book.entity.BookingRecord;
-import com.brownfield.pss.book.entity.Inventory;
-import com.brownfield.pss.book.entity.Passenger;
-import com.brownfield.pss.book.repository.BookingRepository;
-import com.brownfield.pss.book.repository.InventoryRepository;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,12 @@ import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.*;
+import com.brownfield.pss.book.controller.Sender;
+import com.brownfield.pss.book.entity.BookingRecord;
+import com.brownfield.pss.book.entity.Inventory;
+import com.brownfield.pss.book.entity.Passenger;
+import com.brownfield.pss.book.repository.BookingRepository;
+import com.brownfield.pss.book.repository.InventoryRepository;
 
 @Component
 public class BookingComponent {
@@ -43,7 +48,7 @@ public class BookingComponent {
             logger.error("FARE SERVICE IS NOT AVAILABLE");
         }
         // check fare
-        if (!record.getFare().equals(fare.getFare()))
+        if (record !=null && fare !=null && !record.getFare().equals(fare.getFare()))
             throw new BookingException("fare is tampered");
         logger.info("calling inventory to get inventory");
         // check inventory

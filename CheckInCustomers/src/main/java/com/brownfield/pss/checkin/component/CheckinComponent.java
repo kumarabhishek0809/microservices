@@ -21,6 +21,7 @@ public class CheckinComponent {
 	private static final Logger logger = LoggerFactory.getLogger(CheckinComponent.class);
 	private static final String bookingURL = "http://BOOKING-SERVICE/booking"; 
 	
+	@Autowired
 	private RestTemplate restTemplate; 
 
 	CheckinRepository checkinRepository;
@@ -30,7 +31,6 @@ public class CheckinComponent {
 	public CheckinComponent(CheckinRepository checkinRepository, Sender sender) {
 		this.checkinRepository = checkinRepository;
 		this.sender = sender;
-		this.restTemplate = new RestTemplate(); 
 	}
 
 	public long checkIn(CheckInRecord checkIn) {

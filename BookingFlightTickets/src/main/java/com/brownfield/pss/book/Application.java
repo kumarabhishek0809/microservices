@@ -13,6 +13,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,16 +21,12 @@ import com.brownfield.pss.book.component.BookingComponent;
 import com.brownfield.pss.book.entity.BookingRecord;
 import com.brownfield.pss.book.entity.Inventory;
 import com.brownfield.pss.book.entity.Passenger;
-import com.brownfield.pss.book.repository.BookingRepository;
 import com.brownfield.pss.book.repository.InventoryRepository;
 
 @SpringBootApplication
 @EnableDiscoveryClient // to fetch values from client
 public class Application implements CommandLineRunner{
 	private static final Logger logger = LoggerFactory.getLogger(Application.class);
-	@Autowired
-	private BookingRepository bookingRepository;
-	
 	@Autowired
 	private BookingComponent bookingComponent;
 	
@@ -41,8 +38,8 @@ public class Application implements CommandLineRunner{
 	}
 
 	@Bean
+	@LoadBalanced
 	public RestTemplate restTemplate(RestTemplateBuilder builder) {
-	   // Do any additional configuration here
 	   return builder.build();
 	}
 	
@@ -61,7 +58,6 @@ public class Application implements CommandLineRunner{
 		BookingRecord booking = new BookingRecord("BF101", "NYC","SFO","22-JAN-16",new Date(),"101");
 		Set<Passenger> passengers = new HashSet<Passenger>();
 		passengers.add(new Passenger("Gean","Franc","Male", booking));
-	 	
 		booking.setPassengers(passengers);
  		long record  = bookingComponent.book(booking);
 		logger.info("Booking successfully saved..." + record);

@@ -1,8 +1,5 @@
 package com.brownfield.pss.checkin.dto;
 
-import java.util.Date;
-import java.util.Set;
-
 public class BookingRecord {
 	long id;
 	private String status;

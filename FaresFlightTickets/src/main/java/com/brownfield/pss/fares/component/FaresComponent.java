@@ -17,6 +17,7 @@ public class FaresComponent {
 	public FaresComponent(){
 		
 	}
+	
 	@Autowired
 	public FaresComponent(FaresRepository faresRepository){
 		this.faresRepository = faresRepository;

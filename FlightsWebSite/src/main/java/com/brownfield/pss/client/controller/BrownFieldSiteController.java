@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 
 import com.brownfield.pss.client.CheckInRecord;
+import com.brownfield.pss.client.UrlConstants;
 import com.brownfield.pss.client.domain.BookingRecord;
 import com.brownfield.pss.client.domain.Fares;
 import com.brownfield.pss.client.domain.Flight;
@@ -27,11 +29,8 @@ import com.brownfield.pss.client.domain.UIData;
 public class BrownFieldSiteController {
 	private static final Logger logger = LoggerFactory.getLogger(BrownFieldSiteController.class);
 
-  	RestTemplate searchClient = new RestTemplate();
-
-  	RestTemplate bookingClient = new RestTemplate();
-
-  	RestTemplate checkInClient = new RestTemplate();
+	@Autowired
+    private RestTemplate restTemplate;
 	
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String greetingForm(Model model) {
@@ -44,13 +43,14 @@ public class BrownFieldSiteController {
 
    @RequestMapping(value="/search", method=RequestMethod.POST)
    public String greetingSubmit(@ModelAttribute UIData uiData, Model model) {
-		Flight[] flights = searchClient.postForObject("http://localhost:8090/search/get", uiData.getSearchQuery(), Flight[].class); 
+		Flight[] flights = restTemplate.postForObject(UrlConstants.SEARCH_SERVICE+"get", uiData.getSearchQuery(), Flight[].class); 
 		uiData.setFlights(Arrays.asList(flights));
 		model.addAttribute("uidata", uiData);
        return "result";
    }
    
-   @RequestMapping(value="/book/{flightNumber}/{origin}/{destination}/{flightDate}/{fare}", method=RequestMethod.GET)
+   @RequestMapping(value="/book/{flightNumber}/{origin}/{destination}/{flightDate}/{fare}", 
+		   method=RequestMethod.GET)
    public String bookQuery(@PathVariable String flightNumber, 
 		   @PathVariable String origin, 
 		   @PathVariable String destination, 
@@ -77,9 +77,8 @@ public class BrownFieldSiteController {
 	 		booking.setPassengers(passengers);
 		long bookingId =0;
 		try { 
-			URI bookingServicesURI = new URI("http://book-service/booking/create");
-			bookingId = bookingClient.postForObject(bookingServicesURI, booking, long.class); 
-//			 bookingId = bookingClient.postForObject("http://localhost:8060/booking/create", booking, long.class); 
+			URI bookingServicesURI = new URI(UrlConstants.BOOK_SERVICE+"/create");
+			bookingId = restTemplate.postForObject(bookingServicesURI, booking, long.class); 
 			logger.info("Booking created "+ bookingId);
 		}catch (Exception e){
 			logger.error("BOOKING SERVICE NOT AVAILABLE...!!!");
@@ -98,7 +97,7 @@ public class BrownFieldSiteController {
 	@RequestMapping(value="/search-booking-get", method=RequestMethod.POST)
 	public String searchBookingSubmit(@ModelAttribute UIData uiData, Model model) {
 		Long id = new Long(uiData.getBookingid());
- 		BookingRecord booking = bookingClient.getForObject("http://localhost:8060/booking/get/"+id, BookingRecord.class);
+ 		BookingRecord booking = restTemplate.getForObject(UrlConstants.BOOK_SERVICE+"/get/"+id, BookingRecord.class);
  		//Added by Kumar
 		if(booking == null){ //wrong booking id
 			model.addAttribute("message", "Wrong Booking Id "+ id);
@@ -132,7 +131,7 @@ public class BrownFieldSiteController {
 			CheckInRecord checkIn = new CheckInRecord(firstName, lastName, "28C", null,
 					  									flightDate,flightDate, new Long(bookingid).longValue());
 
-			long checkinId = checkInClient.postForObject("http://localhost:8070/checkin/create", checkIn, long.class);
+			long checkinId = restTemplate.postForObject(UrlConstants.CHECKIN_SERVICE+"/create", checkIn, long.class);
 			//Added by Kumar
 			if(checkinId == -1){ //wrong booking id
 				model.addAttribute("message", "Wrong Booking Id "+ checkIn.getBookingId());

@@ -7,7 +7,6 @@ import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,15 +27,16 @@ import com.brownfield.pss.client.domain.SearchQuery;
 @EnableDiscoveryClient // to fetch values from client
 public class Application implements CommandLineRunner, UrlConstants {
 	private static final Logger logger = LoggerFactory.getLogger(Application.class);
+	
+	RestTemplate restTemplate;
+	
 	@Bean
 	@LoadBalanced
 	public RestTemplate restTemplate(RestTemplateBuilder builder) {
-		return builder.build();
+		restTemplate = builder.build();
+		return restTemplate;
 	}
 	
-	@Autowired
-	private RestTemplate restTemplate;
-
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
@@ -45,8 +45,7 @@ public class Application implements CommandLineRunner, UrlConstants {
 	public void run(String... strings) throws Exception {
 		// Search for a flight
 		SearchQuery searchQuery = new SearchQuery("NYC", "SFO", "22-JAN-16");
-		URI flightService = new URI(SEARCH_SERVICE + "get");
-		Flight[] flights = restTemplate.postForObject(flightService, searchQuery, Flight[].class);
+		Flight[] flights = restTemplate.postForObject(SEARCH_SERVICE + "/get", searchQuery, Flight[].class);
 		Arrays.asList(flights).forEach(flight -> logger.info(" flight >" + flight));
 
 		// create a booking only if there are flights.
@@ -61,7 +60,7 @@ public class Application implements CommandLineRunner, UrlConstants {
 		booking.setPassengers(passengers);
 		long bookingId = 0;
 		try {
-			bookingId = restTemplate.postForObject(BOOK_SERVICE + "create", booking, long.class);
+			bookingId = restTemplate.postForObject(BOOK_SERVICE + "/create", booking, long.class);
 			logger.info("Booking created " + bookingId);
 		} catch (Exception e) {
 			logger.error("BOOKING SERVICE NOT AVAILABLE...!!!");
@@ -72,9 +71,7 @@ public class Application implements CommandLineRunner, UrlConstants {
 			return;
 		try {
 			CheckInRecord checkIn = new CheckInRecord("Franc", "Gavin", "28C", null, "BF101", "22-JAN-16", bookingId);
-			// CheckInRecord checkIn = new CheckInRecord("Franc", "Gavin", "28C", new
-			// Date(), "BF101","22-JAN-16", bookingId);
-			long checkinId = restTemplate.postForObject(CHECKIN_SERVICE + "create", checkIn, long.class);
+			long checkinId = restTemplate.postForObject(CHECKIN_SERVICE + "/create", checkIn, long.class);
 			if (checkinId == -1) { // Added by Kumar
 				logger.info("Wrong booking id");
 			} else { // end of changes made by Kumar

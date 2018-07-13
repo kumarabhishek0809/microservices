@@ -1,6 +1,5 @@
 package com.brownfield.pss.client;
 
-import java.net.URI;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,7 +13,6 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.web.client.RestTemplate;
 
 import com.brownfield.pss.client.domain.BookingRecord;
@@ -22,7 +20,7 @@ import com.brownfield.pss.client.domain.Flight;
 import com.brownfield.pss.client.domain.Passenger;
 import com.brownfield.pss.client.domain.SearchQuery;
 
-@EnableGlobalMethodSecurity
+//@EnableGlobalMethodSecurity
 @SpringBootApplication
 @EnableDiscoveryClient // to fetch values from client
 public class Application implements CommandLineRunner, UrlConstants {
@@ -40,8 +38,9 @@ public class Application implements CommandLineRunner, UrlConstants {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-
+	
 	@Override
+	
 	public void run(String... strings) throws Exception {
 		// Search for a flight
 		SearchQuery searchQuery = new SearchQuery("NYC", "SFO", "22-JAN-16");

@@ -4,7 +4,6 @@ buildscript {
 	}
 	repositories {
 		mavenCentral()
-		mavenLocal()
 		maven { url "https://repo.spring.io/snapshot" }
 		maven { url "https://repo.spring.io/milestone" }
 	}
@@ -18,43 +17,27 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
+group = 'com.hystrix'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 10
 
 repositories {
 	mavenCentral()
-	mavenLocal()
 	maven { url "https://repo.spring.io/snapshot" }
 	maven { url "https://repo.spring.io/milestone" }
 }
 
-jar {
-	baseName = 'fares-service'
-	version = '0.0.1-SNAPSHOT'
-}
 
 ext {
 	springCloudVersion = 'Finchley.BUILD-SNAPSHOT'
 }
 
 dependencies {
-	compile('org.springframework.cloud:spring-cloud-starter-config')
-	//compile('org.springframework.cloud:spring-cloud-starter-ribbon')
+	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
 	compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix')
-	//compile('com.oracle:ojdbc:1.6')
-	//runtime('com.oracle:ojdbc:1.6')
-	//compile('org.springframework.data:spring-data-rest-hal-browser:2.6.3.RELEASE')
-	//compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('org.springframework.boot:spring-boot-starter-data-rest')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
-	compile('org.springframework.boot:spring-boot-starter-actuator')
-	//compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix-dashboard')
-	testCompile('org.springframework.boot:spring-boot-starter-test'){
-		exclude(module: 'commons-logging')
-    }
+	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 dependencyManagement {

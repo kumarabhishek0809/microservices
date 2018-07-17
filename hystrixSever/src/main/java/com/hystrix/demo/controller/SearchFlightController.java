@@ -26,7 +26,7 @@ public class SearchFlightController {
 	
 	@RequestMapping("/searchFlight")
 	@HystrixCommand(fallbackMethod="failOver" , commandProperties = {
-			@HystrixProperty(name="execution.isolation.thread.timoutInMilliseconds",value="500")
+			@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="500")
 	})
 	public List<Flight> searchFlights(@RequestParam(name="delay",defaultValue="200") Long delay) throws InterruptedException{
 		Thread.sleep(delay);

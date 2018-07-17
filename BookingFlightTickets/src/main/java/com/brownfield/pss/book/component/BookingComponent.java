@@ -2,6 +2,7 @@ package com.brownfield.pss.book.component;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -52,8 +53,9 @@ public class BookingComponent {
             throw new BookingException("fare is tampered");
         logger.info("calling inventory to get inventory");
         // check inventory
-        Inventory inventory = inventoryRepository.findByFlightNumberAndFlightDate(record.getFlightNumber(),
+        List<Inventory> inventories = inventoryRepository.findAllByFlightNumberAndFlightDate(record.getFlightNumber(),
                 record.getFlightDate());
+        Inventory inventory = inventories.get(0);
         if (!inventory.isAvailable(record.getPassengers().size())) {
             throw new BookingException("No more seats avaialble");
         }

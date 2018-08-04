@@ -20,7 +20,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory().withClient("webApp").secret("webSecret").authorizedGrantTypes("password")
+		clients.inMemory().withClient("webapp").secret("websecret").authorizedGrantTypes("password")
 				.scopes("read,write,trust");
 	}
 

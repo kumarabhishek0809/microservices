@@ -1,4 +1,4 @@
-package com.oauth.controller;
+package com.oauth.server.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

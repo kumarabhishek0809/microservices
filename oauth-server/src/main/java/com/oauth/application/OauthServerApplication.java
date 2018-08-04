@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.oauth.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,7 +9,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @EnableDiscoveryClient // For Client Discovery on Eureka
 @EnableAuthorizationServer // For No of Default End Points
 public class OauthServerApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(OauthServerApplication.class, args);
 	}

@@ -10,13 +10,14 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Bean
-	public AuthenticationManager authenticationManagerBean() throws Exception{
+	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
 	}
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("user1").password("password1").roles("USER");
+		auth.inMemoryAuthentication().withUser("user1").password("password1").roles("USER").and().withUser("admin")
+				.password("password2").roles("ADMIN");
 	}
-	
+
 }

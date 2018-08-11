@@ -19,5 +19,4 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 				.password("password2").roles("ADMIN");
 		auth.eraseCredentials(false);
 	}
-
 }

@@ -11,8 +11,8 @@ http://eureka2:8762/
 #For Oracle DB.
 
 check docker ps -a if oracle not present then pull otherwise run
-docker pull sath89/oracle-12c
-docker run --name oracleDB -p 5500:5500 -p 1521:1521 sath89/oracle-12c
+docker pull store/oracle/database-enterprise:12.2.0.1
+docker run --name oracleDB -p 5500:5500 -p 1521:1521 store/oracle/database-enterprise:12.2.0.1
 docker start oracleDB
 
 

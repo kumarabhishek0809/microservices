@@ -24,6 +24,7 @@ sourceCompatibility = 10
 repositories {
 	mavenCentral()
 	mavenLocal()
+	
 	maven { url "https://repo.spring.io/snapshot" }
 	maven { url "https://repo.spring.io/milestone" }
 }
@@ -39,6 +40,7 @@ ext {
 
 dependencies {
 	compile('org.springframework.cloud:spring-cloud-starter-config')
+	compile("org.springframework.cloud:spring-cloud-starter-feign")
 	//compile('org.springframework.cloud:spring-cloud-starter-ribbon')
 	compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
 	compile('com.oracle:ojdbc:1.6')

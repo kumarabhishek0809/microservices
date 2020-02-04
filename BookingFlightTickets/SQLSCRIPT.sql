@@ -1,5 +1,4 @@
-CREATE TABLESPACE tbs_bookinguser DATAFILE 'tbs_
-bookinguser.dat' SIZE 10M AUTOEXTEND ON;
+CREATE TABLESPACE tbs_bookinguser DATAFILE 'tbs_bookinguser.dat' SIZE 10M AUTOEXTEND ON;
 
 CREATE USER bookinguser IDENTIFIED BY bookinguser DEFAULT
 TABLESPACE tbs_bookinguser QUOTA unlimited on tbs_bookinguser;

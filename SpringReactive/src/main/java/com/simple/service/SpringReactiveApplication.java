@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 @EnableDiscoveryClient
-public class SimpleServiceApplication {
+public class SpringReactiveApplication {
 	
 	@RequestMapping("/execute")
 	public String execute() {
@@ -17,6 +17,6 @@ public class SimpleServiceApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(SimpleServiceApplication.class, args);
+		SpringApplication.run(SpringReactiveApplication.class, args);
 	}
 }

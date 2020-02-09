@@ -29,7 +29,7 @@ repositories {
 }
 
 jar {
-    baseName = 'simple-service'
+    baseName = 'spring-reactive'
     version = '0.0.1-SNAPSHOT'
 }
 

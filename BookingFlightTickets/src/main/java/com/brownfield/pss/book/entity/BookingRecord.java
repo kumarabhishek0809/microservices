@@ -16,9 +16,7 @@ import javax.persistence.SequenceGenerator;
 public class BookingRecord {
 
     @Id
-    //@GeneratedValue(strategy=GenerationType.AUTO)
-    @SequenceGenerator(name="BOOKING_ID_GENERATOR", sequenceName="BOOKING_SEQ", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="BOOKING_ID_GENERATOR")
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	long id;
     
     private String flightNumber;

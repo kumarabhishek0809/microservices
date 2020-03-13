@@ -3,4 +3,6 @@
 /bin/
 .classpath
 .project
+*.class
 
+/build/

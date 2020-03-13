@@ -1,10 +1,11 @@
 # BookingFlightTickets
 BookingFlightTickets
 
-Docker Oracle Start
 
-check docker ps -a if oracle not present then pull otherwise run
-docker pull sath89/oracle-12c
-docker run --name oracleDB -p 5500:5500 -p 1521:1521 sath89/oracle-12c
-docker start oracleDB
 
+docker run -i -p 127.0.0.1:3306:3306 -e MYSQL_ROOT_PASSWORD=root -d --name mysql mysql:5.7
+docker exec -it 92fb9bb15fca mysql -uroot -proot
+
+
+docker build -t booking-service:latest .
+docker run -p 7777:7777 -t booking-service

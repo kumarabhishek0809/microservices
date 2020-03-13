@@ -15,9 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Passenger {
 
     @Id
-    //@GeneratedValue(strategy=GenerationType.AUTO)
-    @SequenceGenerator(name="PASSENGER_ID_GENERATOR", sequenceName="PASSENGER_SEQ", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PASSENGER_ID_GENERATOR")
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	long id;
     
     String firstName;

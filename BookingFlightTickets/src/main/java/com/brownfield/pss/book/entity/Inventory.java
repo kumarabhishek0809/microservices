@@ -9,9 +9,7 @@ import javax.persistence.SequenceGenerator;
 public class Inventory {
 
     @Id
-    //@GeneratedValue(strategy=GenerationType.AUTO)
-    @SequenceGenerator(name="INVENTORY_ID_GENERATOR", sequenceName="INVENTORY_SEQ", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="INVENTORY_ID_GENERATOR")
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	long id;
     
     String flightNumber;

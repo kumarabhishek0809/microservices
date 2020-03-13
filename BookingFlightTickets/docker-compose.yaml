@@ -1,0 +1,47 @@
+version: '3.7'
+services:
+
+bookingFlightTicket-app:
+  container_name: bookingFlightTicket-app
+  image: kumarabhishek0809/bookingFlightTicket-app
+  volumes:
+    - bookingFlightTicket-app:/var/lib/bookingFlightTicket-app-vol
+  expose:
+    - 8080
+  ports:
+    - 8080:8080
+  networks:
+    - bookingFlightTicket
+  links:
+    - database:mysql-database
+  environment:
+    - DATABASE_HOST=mysql-database
+    - DATABASE_USER=root
+    - DATABASE_PASSWORD=root
+    - DATABASE_NAME=root
+    - DATABASE_PORT=3306
+  depends_on:
+    - database
+  restart: always
+
+database:
+  container_name: mysql-database
+  image: mysql
+  environment:
+    MYSQL_DATABASE: root
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_USER: root
+    MYSQL_ROOT_HOST: '%'
+  ports:
+    - "3306:3306"
+  networks:
+    - bookingFlightTicket
+  restart: always
+
+networks:
+bookingFlightTicket:
+  driver: bridge
+
+volumes:
+bookingFlightTicket-app-vol:
+  external: true

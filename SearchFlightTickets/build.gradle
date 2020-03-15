@@ -52,7 +52,7 @@ dependencies {
 	compile('org.springframework.cloud:spring-cloud-starter-bus-amqp')
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-
+compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
 	testCompile "org.junit.jupiter:junit-jupiter-engine:${junitVersion}",
 			"org.junit.jupiter:junit-jupiter-api:${junitVersion}",
 			"org.junit.platform:junit-platform-launcher:${junitPlatformVersion}"

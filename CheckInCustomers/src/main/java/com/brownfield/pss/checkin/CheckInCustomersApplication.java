@@ -19,14 +19,14 @@ import com.brownfield.pss.checkin.entity.CheckInRecord;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class Application implements CommandLineRunner {
-	private static final Logger logger = LoggerFactory.getLogger(Application.class);
+public class CheckInCustomersApplication implements CommandLineRunner {
+	private static final Logger logger = LoggerFactory.getLogger(CheckInCustomersApplication.class);
 
 	@Autowired
 	private CheckinComponent checkinComponent;
 	
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class,args);
+		SpringApplication.run(CheckInCustomersApplication.class,args);
 	}
 	
 

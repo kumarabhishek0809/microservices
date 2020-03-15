@@ -25,8 +25,8 @@ import com.brownfield.pss.book.repository.InventoryRepository;
 
 @SpringBootApplication
 @EnableDiscoveryClient // to fetch values from client
-public class Application implements CommandLineRunner{
-	private static final Logger logger = LoggerFactory.getLogger(Application.class);
+public class BookingFlightTicketApplication implements CommandLineRunner{
+	private static final Logger logger = LoggerFactory.getLogger(BookingFlightTicketApplication.class);
 	@Autowired
 	private BookingComponent bookingComponent;
 	
@@ -34,7 +34,7 @@ public class Application implements CommandLineRunner{
 	private InventoryRepository inventoryRepository;
 	
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(BookingFlightTicketApplication.class, args);
 	}
 
 	@Bean

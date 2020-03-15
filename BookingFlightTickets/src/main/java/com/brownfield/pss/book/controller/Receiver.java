@@ -1,6 +1,5 @@
 package com.brownfield.pss.book.controller;
 
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +15,8 @@ public class Receiver {
 	public Receiver(BookingComponent bookingComponent){
 		this.bookingComponent = bookingComponent;
 	}
-	@RabbitListener(queues = "CheckINQ")
+
+	//@RabbitListener(queues = "CheckINQ")
     public void processMessage(long bookingID ) {
 		bookingComponent.updateStatus(BookingStatus.CHECKED_IN, bookingID);
     }

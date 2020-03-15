@@ -1,11 +1,10 @@
 package com.brownfield.pss.book.repository;
 
 
-import java.util.List;
-
+import com.brownfield.pss.book.entity.Inventory;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.brownfield.pss.book.entity.Inventory;
+import java.util.List;
 
 public interface InventoryRepository extends JpaRepository<Inventory, Long> {
 

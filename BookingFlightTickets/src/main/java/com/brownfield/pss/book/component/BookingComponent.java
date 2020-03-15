@@ -79,7 +79,7 @@ public class BookingComponent {
         bookingDetails.put("FLIGHT_NUMBER", record.getFlightNumber());
         bookingDetails.put("FLIGHT_DATE", record.getFlightDate());
         bookingDetails.put("NEW_INVENTORY", inventory.getAvailable());
-        sender.send(bookingDetails);
+        //sender.send(bookingDetails);
         logger.info("booking event successfully delivered " + bookingDetails);
         return id;
     }

@@ -46,7 +46,8 @@ dependencies {
     compile group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0'
     compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.0'
     compile group: 'javax.activation', name: 'activation', version: '1.1.1'
-compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
 	testCompile "org.junit.jupiter:junit-jupiter-engine:${junitVersion}",
 			"org.junit.jupiter:junit-jupiter-api:${junitVersion}",
 			"org.junit.platform:junit-platform-launcher:${junitPlatformVersion}"

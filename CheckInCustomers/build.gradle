@@ -58,7 +58,8 @@ dependencies {
 	runtime('io.zipkin.java:zipkin-autoconfigure-ui')
 	    // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-feign
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-feign', version: '1.4.7.RELEASE'
-compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
 	testCompile "org.junit.jupiter:junit-jupiter-engine:${junitVersion}",
 			"org.junit.jupiter:junit-jupiter-api:${junitVersion}",
 			"org.junit.platform:junit-platform-launcher:${junitPlatformVersion}"

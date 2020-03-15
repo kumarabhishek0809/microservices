@@ -41,8 +41,10 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-test')
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-feign', version: '1.4.7.RELEASE'
 	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
 
-    //java 9+ does not have Jax B Dependents
+
+	//java 9+ does not have Jax B Dependents
 	compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
 	compile group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0'
 	compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.0'

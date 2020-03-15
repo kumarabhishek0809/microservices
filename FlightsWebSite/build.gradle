@@ -42,8 +42,7 @@ dependencies {
 	//compile('org.springframework.cloud:spring-cloud-starter-ribbon')
 	compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
 	compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix')
-	//compile('com.oracle:ojdbc:1.6')
-	//runtime('com.oracle:ojdbc:1.6')
+	
 	//compile('org.springframework.data:spring-data-rest-hal-browser:2.6.3.RELEASE')
 	//compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-data-rest')
@@ -52,6 +51,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	//compile('org.springframework.boot:spring-boot-starter-security')
 	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
 	compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix-dashboard')
 	testCompile('org.springframework.boot:spring-boot-starter-test'){
 		exclude(module: 'commons-logging')

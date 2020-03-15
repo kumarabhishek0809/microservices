@@ -1,9 +1,6 @@
 spring:
   application:
     name: services-registry
-  zipkin:
-    enabled: false
-
 server:
   port: 8761
 

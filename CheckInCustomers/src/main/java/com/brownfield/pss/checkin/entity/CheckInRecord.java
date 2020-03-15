@@ -1,19 +1,15 @@
 package com.brownfield.pss.checkin.entity;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import java.util.Date;
 
 @Entity
 public class CheckInRecord {
     @Id
-    //@GeneratedValue(strategy=GenerationType.AUTO)
-	@SequenceGenerator(name="CHECKIN_ID_GENERATOR", sequenceName="CHECKIN_SEQ", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CHECKIN_ID_GENERATOR")
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	long id;
     
     String lastName;

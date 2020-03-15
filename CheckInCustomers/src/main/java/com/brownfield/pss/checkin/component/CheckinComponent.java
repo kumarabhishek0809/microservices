@@ -51,7 +51,7 @@ public class CheckinComponent {
 					logger.info("Successfully saved checkin ");
 					// send a message back to booking to update status
 					logger.info("Sending booking id " + bookingId);
-					sender.send(bookingId);
+					//sender.send(bookingId);
 					return checkInId; //Added by Kumar
 				}
 			} else { // In case of wrong booking id

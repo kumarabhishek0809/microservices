@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Passenger {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	long id;
     
     String firstName;

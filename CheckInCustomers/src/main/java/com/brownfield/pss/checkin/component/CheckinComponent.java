@@ -19,7 +19,7 @@ import com.brownfield.pss.checkin.repository.CheckinRepository;
 @Component
 public class CheckinComponent {
 	private static final Logger logger = LoggerFactory.getLogger(CheckinComponent.class);
-	private static final String bookingURL = "http://BOOKING-SERVICE/booking"; 
+	private static final String bookingURL = "http://localhost:7071/booking";
 	
 	@Autowired
 	private RestTemplate restTemplate; 

@@ -9,3 +9,7 @@ docker exec -it 92fb9bb15fca mysql -uroot -proot
 
 docker build -t booking-service:latest .
 docker run -p 7777:7777 -t booking-service
+
+
+Zipkin : http://localhost:9411/zipkin/
+Eureka : http://localhost:8761/

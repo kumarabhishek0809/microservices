@@ -1,12 +1,12 @@
 spring:
   application:
     name: services-registry
+  cloud:
+    config:
+      fail-fast:true
 server:
   port: 8761
-spring:
-    cloud:
-        config:
-            fail-fast:true
+
 eureka:
   instance:
     hostname: ${hostname:localhost}

@@ -29,6 +29,7 @@ repositories {
 
 ext {
     springCloudVersion = 'Hoxton.M3'
+    resilience4jVersion = '0.17.0'
 }
 
 dependencies {
@@ -38,15 +39,33 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile('org.springframework.boot:spring-boot-starter-actuator')
-	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
+
     //spring reactive
-	implementation('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
-	implementation('org.springframework.boot:spring-boot-starter-webflux')
-	compileOnly('org.projectlombok:lombok')
-	testImplementation('org.springframework.boot:spring-boot-starter-test')
-	testImplementation('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
-	testImplementation('io.projectreactor:reactor-test')
+    implementation('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
+    implementation('org.springframework.boot:spring-boot-starter-webflux')
+    compileOnly('org.projectlombok:lombok')
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
+    testImplementation('io.projectreactor:reactor-test')
+
+
+    compile "io.github.resilience4j:resilience4j-spring-boot2:${resilience4jVersion}"
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-starter-aop')
+
+    //aplication monitoring
+    compile group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.2.1'
+
+    //core lib
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    //swagger
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+
 }
 
 dependencyManagement {

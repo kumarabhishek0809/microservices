@@ -1,0 +1,9 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: spring-reactive
+  cloud:
+    config:
+      uri: http://localhost:7777
+    fail-fast: true

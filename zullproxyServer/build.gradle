@@ -13,13 +13,11 @@ buildscript {
 	}
 }
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
-
-
-version = '0.0.1-SNAPSHOT'
+plugins {
+	id 'org.springframework.boot' version '2.2.5.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
 
 repositories {
 	mavenCentral()
@@ -33,12 +31,19 @@ ext {
 }
 
 dependencies {
+	// management endpoints
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+	//API gateway
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-zuul'
+
 	compile('org.springframework.cloud:spring-cloud-starter-config')
     compile('org.springframework.cloud:spring-cloud-starter')
     compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
     compile('org.springframework.cloud:spring-cloud-netflix-core')
-   	compile('org.springframework.cloud:spring-cloud-starter-netflix-zuul')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
 	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
 
@@ -48,4 +53,8 @@ dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
+}
+
+test {
+	useJUnitPlatform()
 }

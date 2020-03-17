@@ -1,4 +1,4 @@
-package com.gl.orderManagementApp.service;
+package com.simple.service;
 
 
 import com.simple.dto.SellerDto;

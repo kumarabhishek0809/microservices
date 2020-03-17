@@ -5,11 +5,10 @@ import com.simple.service.resilience4j.UserRegistrationResilience4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
-public class UserRegistrationServiceImpl implements com.gl.orderManagementApp.service.UserRegistrationService {
+public class UserRegistrationServiceImpl implements UserRegistrationService {
 
     Logger logger = LoggerFactory.getLogger(UserRegistrationServiceImpl.class);
 

@@ -1,4 +1,4 @@
-package com.simple.resilience4j;
+package com.simple.service.resilience4j;
 
 import com.simple.dto.SellerDto;
 import io.github.resilience4j.bulkhead.annotation.Bulkhead;

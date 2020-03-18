@@ -1,4 +1,4 @@
-package com.simple.service.resilience4j;
+package com.simple.service;
 
 import com.simple.dto.SellerDto;
 import io.github.resilience4j.bulkhead.annotation.Bulkhead;
@@ -15,7 +15,7 @@ import java.util.List;
 
 
 @Service
-public class UserRegistrationResilience4j {
+public class  UserRegistrationResilience4j {
     Logger logger = LoggerFactory.getLogger(UserRegistrationResilience4j.class);
     private RestTemplate restTemplate;
 

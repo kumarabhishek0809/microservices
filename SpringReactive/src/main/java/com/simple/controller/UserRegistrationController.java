@@ -1,6 +1,7 @@
 package com.simple.controller;
 
 import com.simple.dto.SellerDto;
+import com.simple.service.UserRegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +14,7 @@ import java.util.List;
 public class UserRegistrationController {
 
     @Autowired
-    private com.gl.orderManagementApp.service.UserRegistrationService userRegistrationService;
+    private UserRegistrationService userRegistrationService;
 
     @PostMapping("/register/seller")
     public String registerAsSeller(@RequestBody SellerDto sellerDto) {

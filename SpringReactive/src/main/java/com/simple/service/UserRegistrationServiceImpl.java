@@ -1,7 +1,6 @@
 package com.simple.service;
 
 import com.simple.dto.SellerDto;
-import com.simple.service.resilience4j.UserRegistrationResilience4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

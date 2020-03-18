@@ -51,13 +51,16 @@ dependencies {
     testImplementation('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
     testImplementation('io.projectreactor:reactor-test')
 
-
     compile "io.github.resilience4j:resilience4j-spring-boot2:${resilience4jVersion}"
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-aop')
 
     //aplication monitoring
-    compile group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.2.1'
+    /*
+    org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'prometheusMeterRegistry'
+    defined in class path resource [org/springframework/boot/actuate/autoconfigure/metrics/export/prometheus/PrometheusMetricsExportAutoConfiguration.class]
+     */
+    compile "io.micrometer:micrometer-registry-prometheus"
 
     //core lib
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -65,6 +68,9 @@ dependencies {
     //swagger
     compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
     implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+
+    //aplication monitoring
+    compile group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.2.1'
 
 }
 

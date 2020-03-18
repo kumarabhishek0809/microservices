@@ -38,6 +38,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
 
     //spring reactive
     implementation('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
@@ -52,11 +53,12 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-aop')
 
     compile("io.github.resilience4j:resilience4j-spring-boot2:${resilience4jVersion}")
-    compile("io.github.resilience4j:resilience4j-all:${resilience4jVersion}") // Optional, only required when you want to use the Decorators class
+    compile("io.github.resilience4j:resilience4j-all:${resilience4jVersion}")
     compile("io.github.resilience4j:resilience4j-reactor:${resilience4jVersion}")
     compile("io.github.resilience4j:resilience4j-timelimiter:${resilience4jVersion}")
     compile("io.github.resilience4j:resilience4j-circuitbreaker:${resilience4jVersion}")
 
+    //for Data Capturing.
     compile("io.micrometer:micrometer-registry-prometheus")
 
     compile 'de.codecentric:chaos-monkey-spring-boot:2.1.1'

@@ -25,7 +25,7 @@ public class  UserRegistrationResilience4j {
 
 
     @CircuitBreaker(name = "service1", fallbackMethod = "fallbackForRegisterSeller")
-    @RateLimiter(name = "service1", fallbackMethod = "rateLimiterfallback")
+    @RateLimiter(name = "service1", fallbackMethod = "rateLimiterfallback") //No of Requests Controlled.
     @Retry(name = "retryService1", fallbackMethod = "retryfallback")
     @Bulkhead(name = "bulkheadService1", fallbackMethod = "bulkHeadFallback")
     public String registerSeller(SellerDto sellerDto) {

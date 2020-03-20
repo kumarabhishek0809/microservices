@@ -7,8 +7,11 @@ http://localhost:8085/actuator/health
 
 http://localhost:8085/actuator
 http://localhost:8085/actuator/prometheus
-Local URL
+
+Prometheus URL
 http://localhost:9090/graph
 
 Garfana Board
 http://localhost:3000/login
+
+

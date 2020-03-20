@@ -1,19 +1,17 @@
 buildscript {
-    ext {
-        springBootVersion = '2.2.5.RELEASE'
-        lombokVersion = '1.18.10'
-        junitVersion = '5.3.1'
-        junitPlatformVersion = '1.3.1'
-    }
-    repositories {
-        mavenCentral()
-        mavenLocal()
-        maven { url "https://repo.spring.io/snapshot" }
-        maven { url "https://repo.spring.io/milestone" }
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-    }
+	ext {
+		springBootVersion = '2.2.4.RELEASE'
+		junitVersion = '5.3.1'
+		junitPlatformVersion = '1.3.1'
+	}
+	repositories {
+		mavenCentral()
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
 }
 
 apply plugin: 'java'
@@ -21,42 +19,41 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
+group = 'com.eureka.server'
+version = '0.0.1-SNAPSHOT'
+
 
 repositories {
-    mavenCentral()
-    mavenLocal()
-    maven { url "https://repo.spring.io/snapshot" }
-    maven { url "https://repo.spring.io/milestone" }
+	mavenCentral()
+	maven { url "https://repo.spring.io/snapshot" }
+	maven { url "https://repo.spring.io/milestone" }
 }
 
+
 ext {
-    springCloudVersion = 'Hoxton.M3'
+	springCloudVersion = 'Hoxton.M3'
 }
 
 dependencies {
-	//for Spring Cloud
-	compile('org.springframework.cloud:spring-cloud-starter-config')
-	compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
-	compile('org.springframework.cloud:spring-cloud-netflix-core')
-
+	compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
 	compile('org.springframework.boot:spring-boot-starter-web')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
-
-	//For distributed logging
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+	compile('org.springframework.boot:spring-boot-starter-test')
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-feign', version: '1.4.7.RELEASE'
 	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
 	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
 
-	compileOnly('org.projectlombok:lombok')
 
-	testImplementation('org.springframework.boot:spring-boot-starter-test')
-
-	compile('org.springframework.boot:spring-boot-starter-actuator')
-	compile('org.springframework.boot:spring-boot-starter-aop')
-
-	//swagger
-	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
-	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+	//java 9+ does not have Jax B Dependents
+	compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
+	compile group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0'
+	compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.0'
+	compile group: 'javax.activation', name: 'activation', version: '1.1.1'
+	testCompile "org.junit.jupiter:junit-jupiter-engine:${junitVersion}",
+			"org.junit.jupiter:junit-jupiter-api:${junitVersion}",
+			"org.junit.platform:junit-platform-launcher:${junitPlatformVersion}"
 }
+
 
 dependencyManagement {
 	imports {

@@ -1,3 +1,4 @@
-docker build -t services-registry:latest .
-docker run --name services-registry -d -p 127.0.0.1:8086:8086 -m 1G --env CONFIG_SERVER_URI=http://config-server:7777 -t services-registry 
-http://127.0.0.1:7777/spring-reactive/default 
+docker build -t registration-service:latest .
+docker run --name registration-service -d -p 127.0.0.1:8086:8086 -m 1G --env CONFIG_SERVER_URI=http://config-server:7777 -t registration-service 
+
+http://127.0.0.1:7777/registration-service/default 

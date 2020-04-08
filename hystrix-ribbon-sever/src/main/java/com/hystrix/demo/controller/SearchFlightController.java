@@ -25,7 +25,8 @@ public class SearchFlightController {
 	private RestTemplate restTemplate;
 	
 	@RequestMapping("/searchFlight")
-	@HystrixCommand(fallbackMethod="failOver" , ignoreExceptions = {IllegalStateException.class },commandProperties = {
+	@HystrixCommand(fallbackMethod="failOver" , ignoreExceptions = {IllegalStateException.class },
+			commandProperties = {
 			@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="500")
 	})
 	public List<Flight> searchFlights(@RequestParam(name="delay",defaultValue="200") Long delay) throws InterruptedException{

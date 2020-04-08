@@ -44,7 +44,7 @@ public class FluxAndMonoTransform {
 
         StepVerifier.create(iteratableFlux)
                 .expectNext(4, 4, 4, 5, 4, 4, 4, 5)
-                .verifyComplete();
+                .expectNext(4);
     }
 
     @Test
@@ -67,8 +67,7 @@ public class FluxAndMonoTransform {
                 }).log();
 
         StepVerifier.create(iteratableFlux)
-                .expectNextCount(2)
-                .verifyComplete();
+                .expectNextCount(2);
     }
 
 

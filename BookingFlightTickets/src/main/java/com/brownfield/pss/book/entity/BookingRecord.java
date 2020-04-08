@@ -61,6 +61,10 @@ public class BookingRecord {
 		this.flightNumber = flightNumber;
 	}
 
+	@Transient
+	@Adapter
+	@Inverse
+	@Vision
 	public long getId() {
 		return id;
 	}

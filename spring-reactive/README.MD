@@ -20,7 +20,17 @@ docker run --name spring-reactive -d -p 127.0.0.1:8085:8085 -m 1G --env CONFIG_S
 
 http://127.0.0.1:7777/spring-reactive/default 
 
-
 Docker Remote
 docker build -t kumarabhishek0809/spring-reactive:latest .
 docker push kumarabhishek0809/spring-reactive
+
+
+http://localhost:7777/spring-reactive/default
+http://localhost:8761/
+
+
+
+EndPoints.
+http://localhost:8085/v1/items
+http://localhost:8085/fluxstream
+http://localhost:8085/flux

@@ -38,25 +38,18 @@ dependencies {
     //Spring Cloud
     compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
     compile('org.springframework.cloud:spring-cloud-netflix-core')
+    compile('org.springframework.boot:spring-boot-starter-web')
 
     //For distributed logging
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
 
-    //spring reactive
-    implementation('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
-    implementation('org.springframework.boot:spring-boot-starter-webflux')
     compileOnly('org.projectlombok:lombok')
     annotationProcessor("org.projectlombok:lombok")
     testAnnotationProcessor("org.projectlombok:lombok")
 
     //Testing
     testImplementation('org.springframework.boot:spring-boot-starter-test')
-    //this is the one which creates mongo DB instance while running test case.
-    testImplementation('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
-    testImplementation('io.projectreactor:reactor-test')
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-aop')
@@ -68,13 +61,16 @@ dependencies {
     compile("io.github.resilience4j:resilience4j-timelimiter:${resilience4jVersion}")
     compile("io.github.resilience4j:resilience4j-circuitbreaker:${resilience4jVersion}")
 
-
     //for Data Capturing and monitoring
     compile("io.micrometer:micrometer-registry-prometheus")
 
     compile 'de.codecentric:chaos-monkey-spring-boot:2.1.1'
     compile("io.vavr:vavr-jackson:0.10.0")
     testCompile('io.projectreactor:reactor-test')
+
+    //swagger
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
 }
 
 test {

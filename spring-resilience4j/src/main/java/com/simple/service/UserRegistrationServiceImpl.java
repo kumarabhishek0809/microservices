@@ -4,15 +4,13 @@ import com.simple.dto.SellerDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
 public class UserRegistrationServiceImpl implements UserRegistrationService {
-
     Logger logger = LoggerFactory.getLogger(UserRegistrationServiceImpl.class);
-
     private UserRegistrationResilience4j userRegistrationResilience4j;
-
 
     public UserRegistrationServiceImpl(UserRegistrationResilience4j userRegistrationResilience4j) {
         this.userRegistrationResilience4j = userRegistrationResilience4j;

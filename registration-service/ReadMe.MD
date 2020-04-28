@@ -6,3 +6,12 @@ http://127.0.0.1:7777/registration-service/default
 Docker Remote
 docker build -t kumarabhishek0809/registration-service:latest .
 docker push kumarabhishek0809/registration-service
+
+
+##rabbit mq
+guest/guest
+localhost:15672
+
+docker network create rabbitmq-cluster
+docker network ls
+docker-compose -f docker-compose-rabbit-mq.yaml up -d

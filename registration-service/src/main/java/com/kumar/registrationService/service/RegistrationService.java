@@ -1,6 +1,6 @@
-package com.gl.registrationService.service;
+package com.kumar.registrationService.service;
 
-import com.gl.registrationService.dto.SellerDto;
+import com.kumar.registrationService.dto.SellerDto;
 
 import java.util.List;
 

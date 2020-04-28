@@ -1,7 +1,7 @@
-package com.gl.registrationService.controller;
+package com.kumar.registrationService.controller;
 
-import com.gl.registrationService.dto.SellerDto;
-import com.gl.registrationService.service.RegistrationService;
+import com.kumar.registrationService.dto.SellerDto;
+import com.kumar.registrationService.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/registration")
-public class RegistrationController {
+public class RegistrationController  {
 
     @Autowired
     private RegistrationService registrationService;

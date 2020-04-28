@@ -1,4 +1,4 @@
-package com.gl.registrationService.dto;
+package com.kumar.registrationService.dto;
 
 public class Item {
         private long id;

@@ -1,4 +1,4 @@
-package com.gl.registrationService.config;
+package com.kumar.registrationService.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

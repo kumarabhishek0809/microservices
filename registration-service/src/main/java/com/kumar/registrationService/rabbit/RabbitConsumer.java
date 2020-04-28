@@ -12,13 +12,13 @@ import java.io.ObjectInputStream;
 @Service
 public class RabbitConsumer {
 
-    @RabbitListener(queues = "Mobile")
+   // @RabbitListener(queues = "Mobile")
     public void getMessageMobile(Person person) {
         System.out.println(person.getName());
     }
 
 
-    @RabbitListener(queues = "AC")
+    //@RabbitListener(queues = "AC")
     public void getMessageAc(byte[] message) throws IOException, ClassNotFoundException {
         ByteArrayInputStream bas = new ByteArrayInputStream(message);
         ObjectInput oi = new ObjectInputStream(bas);

@@ -27,18 +27,17 @@ public class Runner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("Sending message...");
-        rabbitTemplate.convertAndSend(RegistrationServiceApplication.topicExchangeName, "foo.bar.baz", "Hello from RabbitMQ!");
-
-        for(int i = 0; i<100; i++) {
+        for(int i = 0; i<10000; i++) {
             Person person = new Person(i, "Name :::" + i);
             rabbitTemplate.convertAndSend("Mobile", person);
             rabbitTemplate.convertAndSend("Direct-Exchange", "mobile", person);
             rabbitTemplate.convertAndSend("Fanout-Exchange", "", person);
             rabbitTemplate.convertAndSend("Topic-Exchange", "tv.mobile.ac", person);
+            rabbitTemplate.convertAndSend("Topic-Exchange", "kumar.tv.exchange", person);
             rabbitTemplate.convertAndSend(RegistrationServiceApplication.topicExchangeName, "foo.bar.baz", "Hello from RabbitMQ!");
         }
 
-        for(int i = 0; i<100; i++) {
+        for(int i = 0; i<10000; i++) {
             Person person = new Person(i, "Name :::" + i);
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             ObjectOutputStream out = new ObjectOutputStream(bos);

@@ -1,0 +1,84 @@
+buildscript {
+    ext {
+        springBootVersion = '2.2.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven { url "https://repo.spring.io/snapshot" }
+    maven { url "https://repo.spring.io/milestone" }
+
+}
+
+ext {
+    springCloudVersion = 'Hoxton.M3'
+    resilience4jVersion = '1.3.1'
+}
+
+dependencies {
+
+    //Spring Starter
+    compile('org.springframework.cloud:spring-cloud-starter-config')
+
+    //Spring Cloud
+    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+    compile('org.springframework.cloud:spring-cloud-netflix-core')
+    compile('org.springframework.boot:spring-boot-starter-web')
+
+    //For distributed logging
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
+
+    compileOnly('org.projectlombok:lombok')
+    annotationProcessor("org.projectlombok:lombok")
+    testAnnotationProcessor("org.projectlombok:lombok")
+
+    //Testing
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-starter-aop')
+
+    //Fallback Methods.
+    compile("io.github.resilience4j:resilience4j-spring-boot2:${resilience4jVersion}")
+    compile("io.github.resilience4j:resilience4j-all:${resilience4jVersion}")
+    compile("io.github.resilience4j:resilience4j-reactor:${resilience4jVersion}")
+    compile("io.github.resilience4j:resilience4j-timelimiter:${resilience4jVersion}")
+    compile("io.github.resilience4j:resilience4j-circuitbreaker:${resilience4jVersion}")
+
+    //for Data Capturing and monitoring
+    compile("io.micrometer:micrometer-registry-prometheus")
+
+    compile 'de.codecentric:chaos-monkey-spring-boot:2.1.1'
+    compile("io.vavr:vavr-jackson:0.10.0")
+    testCompile('io.projectreactor:reactor-test')
+
+    //swagger
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+}
+
+test {
+    exclude 'com/simple/**'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}

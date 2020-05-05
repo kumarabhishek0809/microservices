@@ -1,0 +1,13 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: spring-reactive
+  cloud:
+    config:
+      uri: ${CONFIG_SERVER_URI:http://localhost:7777}
+    fail-fast: true
+  data.mongodb:
+    host: localhost
+    port: 27017
+    database: local

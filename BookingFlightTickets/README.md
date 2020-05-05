@@ -13,3 +13,12 @@ docker run -p 7777:7777 -t booking-service
 
 Zipkin : http://localhost:9411/zipkin/
 Eureka : http://localhost:8761/
+
+
+##rabbit mq
+guest/guest
+localhost:15672
+
+docker network create rabbitmq-cluster
+docker network ls
+docker-compose -f docker-compose-rabbit-mq.yaml up -d

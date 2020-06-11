@@ -62,9 +62,6 @@ public class BookingRecord {
 	}
 
 	@Transient
-	@Adapter
-	@Inverse
-	@Vision
 	public long getId() {
 		return id;
 	}

@@ -22,7 +22,6 @@ public class Routefilter extends ZuulFilter {
 	}
 	@Override
 	public Object run() {
-
 		log.info("Inside route filter..");
 		return null;
 	}

@@ -36,15 +36,14 @@ public class OAuthServerConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-            .withClient("orderprocessingapp")
-                .secret(passwordEncoder.encode("orderprocessingappsecret"))
+                .withClient("application1").secret(passwordEncoder
+                .encode("application1secret"))
                 .authorizedGrantTypes("client_credentials", "password")
                 .scopes("read", "write")
                 .accessTokenValiditySeconds(3600)
                 .resourceIds("sample-oauth")
-            .and()
-            .withClient("orderprocessingservice")
-                .secret(passwordEncoder.encode("orderprocessingservicesecret"))
+                .and()
+                .withClient("application2").secret(passwordEncoder.encode("application2secret"))
                 .authorizedGrantTypes("client_credentials", "password")
                 .scopes("read")
                 .accessTokenValiditySeconds(3600)

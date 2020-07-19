@@ -7,22 +7,3 @@ spring:
   cloud:
     config:
       uri: ${CONFIG_SERVER_URI:http://localhost:7777}
-
-zuul:
-  routes:
-    simple-service:
-      path: /simple-service/**
-      serviceId: simple-service
-    booking-service:
-      path: /booking-service/**
-      serviceId: booking-service
-    checkin-service:
-      path: /checkin-service/**
-      serviceId: checkin-service
-    registration-service:
-      path: /registration-service/**
-      serviceId: registration-service
-    oauth-server:
-      path: /oauth-server/**
-      serviceId: oauth-server
-  prefix: /api

@@ -43,7 +43,9 @@ public class OAuthServerConfig extends AuthorizationServerConfigurerAdapter {
                 .accessTokenValiditySeconds(3600)
                 .resourceIds("sample-oauth")
                 .and()
-                .withClient("application2").secret(passwordEncoder.encode("application2secret"))
+
+                .withClient("application2")
+                .secret(passwordEncoder.encode("application2secret"))
                 .authorizedGrantTypes("client_credentials", "password")
                 .scopes("read")
                 .accessTokenValiditySeconds(3600)

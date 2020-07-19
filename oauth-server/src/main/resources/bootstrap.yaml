@@ -1,9 +1,16 @@
+spring:
+  application:
+    name: oauth-server
+  cloud:
+    config:
+      uri: ${CONFIG_SERVER_URI:http://localhost:7777}
+    fail-fast: true
+
 security:
   oauth2:
     client:
       authenticationScheme: header
-    resource:
-      filter-order: 3
+
 server:
   error:
     whitelabel:

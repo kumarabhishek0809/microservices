@@ -1,7 +1,7 @@
 package com.kumar.registrationService.rabbit;
 
 import com.kumar.registrationService.model.Person;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
+//import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayInputStream;

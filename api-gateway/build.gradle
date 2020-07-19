@@ -31,11 +31,11 @@ ext {
 }
 
 dependencies {
-	// management endpoints
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-
 	//API gateway
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-zuul'
+
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-actuator')
 
 	compile('org.springframework.cloud:spring-cloud-starter-config')
     compile('org.springframework.cloud:spring-cloud-starter')
@@ -45,7 +45,7 @@ dependencies {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
-    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
+    // compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
 
 }
 

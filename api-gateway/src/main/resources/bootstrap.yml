@@ -1,10 +1,12 @@
+server:
+  port: 7020
 
 spring:
   application:
     name: api-gateway
   cloud:
     config:
-      uri: http://localhost:7777
+      uri: ${CONFIG_SERVER_URI:http://localhost:7777}
 
 zuul:
   routes:
@@ -17,8 +19,14 @@ zuul:
     checkin-service:
       path: /api/checkin-service/**
       serviceId: checkin-service
+    registration-service:
+      path: /api/registration-service/**
+      serviceId: registration-service
+    oauth-server:
+      path: /api/oauth-server/**
+      serviceId: oauth-server
   prefix: /api
 
 ribbon:
   eureka:
-    enabled: true
+    enabled: true 

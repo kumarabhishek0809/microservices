@@ -20,7 +20,7 @@ import java.util.List;
 @RequestMapping("/registration")
 @EnableResourceServer
 @EnableWebSecurity
-public class RegistrationController   extends WebSecurityConfigurerAdapter {
+public class RegistrationController  { //} extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private RegistrationService registrationService;
@@ -35,6 +35,7 @@ public class RegistrationController   extends WebSecurityConfigurerAdapter {
         return registrationService.getSellersList();
     }
 
+    /*
     @Bean
     public ResourceServerTokenServices tokenServices() {
         RemoteTokenServices tokenServices = new RemoteTokenServices();
@@ -50,4 +51,5 @@ public class RegistrationController   extends WebSecurityConfigurerAdapter {
         authenticationManager.setTokenServices(tokenServices());
         return authenticationManager;
     }
+     */
 }

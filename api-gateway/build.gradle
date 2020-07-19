@@ -1,0 +1,60 @@
+buildscript {
+	ext {
+		springBootVersion = '2.2.4.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+		 mavenLocal()
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '2.2.5.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+	maven { url "https://repo.spring.io/snapshot" }
+	maven { url "https://repo.spring.io/milestone" }
+}
+
+ext {
+	springCloudVersion = 'Hoxton.M3'
+}
+
+dependencies {
+	// management endpoints
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+	//API gateway
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-zuul'
+
+	compile('org.springframework.cloud:spring-cloud-starter-config')
+    compile('org.springframework.cloud:spring-cloud-starter')
+    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+    compile('org.springframework.cloud:spring-cloud-netflix-core')
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
+
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+test {
+	useJUnitPlatform()
+}

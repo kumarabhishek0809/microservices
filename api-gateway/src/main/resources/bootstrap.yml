@@ -11,22 +11,18 @@ spring:
 zuul:
   routes:
     simple-service:
-      path: /api/simple-service/**
+      path: /simple-service/**
       serviceId: simple-service
     booking-service:
-      path: /api/booking-service/**
+      path: /booking-service/**
       serviceId: booking-service
     checkin-service:
-      path: /api/checkin-service/**
+      path: /checkin-service/**
       serviceId: checkin-service
     registration-service:
-      path: /api/registration-service/**
+      path: /registration-service/**
       serviceId: registration-service
     oauth-server:
-      path: /api/oauth-server/**
+      path: /oauth-server/**
       serviceId: oauth-server
   prefix: /api
-
-ribbon:
-  eureka:
-    enabled: false

@@ -10,7 +10,7 @@ gradle wrapper
 docker build -t config-server:latest .
 docker run --name config-server -d -p 127.0.0.1:7777:7777 -m 1G -t config-server 
 
-to Test : http://127.0.0.1:7777/spring-reactive/default
+to Test : http://127.0.0.1:7777/registration-service/default
 
 
 Docker Remote

@@ -15,14 +15,19 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class RegistrationServiceApplication {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         SpringApplication.run(RegistrationServiceApplication.class, args);
     }
 
-	public static final String topicExchangeName = "spring-boot-exchange";
 
-	public static final String queueName = "spring-boot";
 
+    public static final String topicExchangeName = "spring-boot-exchange";
+    public static final String queueName = "spring-boot";
+
+
+    /*
+
+	You need to configure rabbit for this
     @Bean
     Queue queue() {
         return new Queue(queueName, false);
@@ -52,5 +57,5 @@ public class RegistrationServiceApplication {
     MessageListenerAdapter listenerAdapter(Receiver receiver) {
         return new MessageListenerAdapter(receiver, "receiveMessage");
     }
-
+	 */
 }

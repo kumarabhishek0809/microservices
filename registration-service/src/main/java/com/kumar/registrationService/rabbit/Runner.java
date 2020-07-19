@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 
 @Component
-public class Runner implements CommandLineRunner {
+public class Runner { //implements CommandLineRunner {
 
     private final RabbitTemplate rabbitTemplate;
     private final Receiver receiver;
@@ -24,7 +24,7 @@ public class Runner implements CommandLineRunner {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    @Override
+    //@Override
     public void run(String... args) throws Exception {
         System.out.println("Sending message...");
         for(int i = 0; i<10000; i++) {

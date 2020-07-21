@@ -7,6 +7,7 @@ Docker Remote
 docker build -t kumarabhishek0809/registration-service:latest .
 docker push kumarabhishek0809/registration-service
 
+docker-compose -f docker-compose-prometheus-grafana.yml up
 
 ##rabbit mq
 guest/guest

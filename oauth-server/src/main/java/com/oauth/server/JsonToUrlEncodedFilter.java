@@ -32,7 +32,8 @@ public class JsonToUrlEncodedFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
                                                                                 throws ServletException, IOException {
 
-        if (Objects.equals(request.getServletPath(), "/oauth/token") && Objects.equals(request.getContentType(),
+        if (Objects.equals(request.getServletPath(), "/oauth/token")
+                && Objects.equals(request.getContentType(),
                                                                                             "application/json")) {
 
             byte[] json = ByteStreams.toByteArray(request.getInputStream());

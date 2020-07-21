@@ -10,15 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @SpringBootApplication
 public class OauthServerApplication {
 
-	@RequestMapping(
-			value = "/",
-			produces = MediaType.APPLICATION_JSON_VALUE
-	)
-	public ResponseEntity<String> index() {
-		return new ResponseEntity<>("{\"message\":\"Home!\"}", HttpStatus.OK);
-	}
-
-
 	public static void main(String[] args) {
 		SpringApplication
 				.run(OauthServerApplication.class, args);

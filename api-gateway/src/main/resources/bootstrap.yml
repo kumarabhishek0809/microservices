@@ -1,5 +1,5 @@
 server:
-  port: 7020
+  port: 9090
 
 spring:
   application:
@@ -7,3 +7,24 @@ spring:
   cloud:
     config:
       uri: ${CONFIG_SERVER_URI:http://localhost:7777}
+
+zuul:
+  routes:
+    token-service:
+      path: /token-service/**
+      url: http://localhost:8085
+    simple-service:
+      path: /simple-service/**
+      serviceId: simple-service
+    booking-service:
+      path: /booking-service/**
+      serviceId: booking-service
+    checkin-service:
+      path: /checkin-service/**
+      serviceId: checkin-service
+    registration-service:
+      path: /registration-service/**
+      serviceId: registration-service
+    oauth-server:
+      path: /oauth-server/**
+      serviceId: oauth-server

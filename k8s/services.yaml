@@ -1,0 +1,32 @@
+
+apiVersion: v1
+kind: Service
+metadata: 
+  name: fleetman-webapp
+spec: 
+  type: NodePort
+  #this defines which part is represented by this service
+  selector: 
+   app: webapp
+   release: release0
+  ports:
+  - name: http
+    port: 80
+    targetPort: 30080  
+
+---
+# 
+apiVersion: v1
+kind: Service
+metadata: 
+  name: fleetman-queue
+spec: 
+  type: NodePort
+  #this defines which part is represented by this service
+  selector: 
+   app: queue
+   release: release0
+  ports:
+  - name: http
+    port: 8161
+    nodePort: 30100  

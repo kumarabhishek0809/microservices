@@ -1,12 +1,17 @@
 buildscript {
     ext {
         springBootVersion = '2.4.0'
+        junitVersion = '5.3.1'
+		junitPlatformVersion = '1.3.1'
     }
     repositories {
         mavenCentral()
+        		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.9.RELEASE"
     }
 }
 
@@ -25,9 +30,17 @@ repositories {
 }
 
 ext {
-    springCloudVersion = '2020.0.0-RC1'
+    springCloudVersion = '2020.0.0-M2'
     resilience4jVersion = '1.3.1'
 }
+
+bootJar {
+    enabled = true
+    manifest {
+        attributes 'Start-Class': 'com.simple.SpringResilience'
+    }
+}
+
 
 dependencies {
 
@@ -36,7 +49,6 @@ dependencies {
 
     //Spring Cloud
     compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
-    compile('org.springframework.cloud:spring-cloud-netflix-core')
     compile('org.springframework.boot:spring-boot-starter-web')
 
     //For distributed logging

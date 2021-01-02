@@ -11,6 +11,7 @@ buildscript {
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath "io.spring.gradle:dependency-management-plugin:1.0.9.RELEASE"
 	}
 }
 
@@ -31,7 +32,14 @@ repositories {
 
 
 ext {
-	springCloudVersion = '2020.0.0-RC1'
+	springCloudVersion = '2020.0.0-M2'
+}
+
+bootJar {
+    enabled = true
+    manifest {
+        attributes 'Start-Class': 'com.spring.cloud.central.config.ConfigServerApplication'
+    }
 }
 
 dependencies {

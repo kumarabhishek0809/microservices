@@ -1,3 +1,6 @@
+before starting this container below dependencies should be started. 
+``-Eureka Discovery
+``-Config-Server
 
 Swagger
 http://localhost:8085/swagger-ui.html#/

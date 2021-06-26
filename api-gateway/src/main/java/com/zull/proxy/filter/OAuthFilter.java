@@ -53,7 +53,7 @@ public class OAuthFilter extends ZuulFilter {
             handleError(requestContext);
             return null;
         }
-        else if(authHeader.split("Bearer ").length != 2){Executing Throttling Filter
+        else if(authHeader.split("Bearer ").length != 2){ // Executing Throttling Filter
             log.error("Invalid auth header");
             //Send error to client
             handleError(requestContext);

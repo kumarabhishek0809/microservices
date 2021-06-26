@@ -9,6 +9,8 @@ docker push kumarabhishek0809/registration-service
 
 docker-compose -f docker-compose-prometheus-grafana.yml up
 
+docker pull prom/prometheus
+
 ##rabbit mq
 guest/guest
 localhost:15672

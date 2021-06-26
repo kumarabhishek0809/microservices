@@ -18,3 +18,5 @@ docker build -t kumarabhishek0809/config-server:latest .
 docker push kumarabhishek0809/config-server 
 
 docker run kumarabhishek0809/config-server 
+
+docker run -d -p 9411:9411 openzipkin/zipkin

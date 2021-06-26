@@ -36,7 +36,8 @@ public class OAuthServerConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("application1").secret(passwordEncoder
+                .withClient("application1")
+                .secret(passwordEncoder
                 .encode("application1secret"))
                 .authorizedGrantTypes("client_credentials", "password")
                 .scopes("read", "write")

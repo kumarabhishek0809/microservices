@@ -1,4 +1,4 @@
-package com.oauth.server;
+package com.oauth.server.domain;
 
 public class User {
 

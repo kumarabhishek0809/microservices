@@ -1,12 +1,14 @@
-package com.oauth.server;
+package com.oauth.server.service;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.oauth.server.domain.User;
 
 public class UserDetailsServiceImpl implements UserDetailsService {
 

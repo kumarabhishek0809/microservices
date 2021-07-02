@@ -1,12 +1,13 @@
 package com.zull.proxy;
 
-import com.zull.proxy.filter.OAuthFilter;
-import com.zull.proxy.filter.ThrottlingFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
+
+import com.zull.proxy.filter.OAuthFilter;
+import com.zull.proxy.filter.ThrottlingFilter;
 
 @SpringBootApplication
 @EnableZuulProxy

@@ -15,4 +15,4 @@ server:
   error:
     whitelabel:
       enabled: false
-  port: 8085
+  port: 0

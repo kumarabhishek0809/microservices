@@ -1,9 +1,9 @@
 package com.zull.proxy.filter;
 
+import java.util.ArrayList;
+
 import org.apache.commons.collections.MapIterator;
 import org.apache.commons.collections.map.LRUMap;
-
-import java.util.ArrayList;
 
 public class CounterCache<K, T> {
 

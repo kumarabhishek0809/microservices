@@ -10,7 +10,7 @@ security:
   oauth2:
     client:
       authenticationScheme: header
-
+      
 server:
   error:
     whitelabel:

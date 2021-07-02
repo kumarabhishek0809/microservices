@@ -50,6 +50,7 @@ dependencies {
 
 	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
     //compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
+    implementation 'org.springframework.boot:spring-boot-starter-jersey'
 
 
 

@@ -3,7 +3,8 @@ spring:
     name: services-registry
   cloud:
     config:
-      fail-fast:true
+      fail-fast : true
+      
 server:
   port: 8761
 
@@ -14,7 +15,11 @@ eureka:
   client:
     #Eureka client is instructed not to register itself upon start up
     register-with-eureka: false
+    healthcheck:
+      enabled: true
     #not to search for other registry nodes to connect to
     fetch-registry: false
     service-url:
       default-zone: http://${eureka.instance.hostname}:${server.port}/eureka
+      
+      

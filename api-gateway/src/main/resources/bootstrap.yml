@@ -12,7 +12,7 @@ zuul:
   routes:
     token-service:
       path: /token-service/**
-      url: http://localhost:8085
+      url: token-service
     simple-service:
       path: /simple-service/**
       serviceId: simple-service

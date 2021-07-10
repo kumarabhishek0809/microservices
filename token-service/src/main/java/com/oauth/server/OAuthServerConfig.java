@@ -42,7 +42,7 @@ public class OAuthServerConfig extends AuthorizationServerConfigurerAdapter {
                 .authorizedGrantTypes("client_credentials", "password")
                 .scopes("read", "write")
                 .accessTokenValiditySeconds(3600)
-                .resourceIds("sample-oauth")
+                .resourceIds("TOKEN-SERVICE")
                 .and()
 
                 .withClient("application2")
@@ -50,7 +50,7 @@ public class OAuthServerConfig extends AuthorizationServerConfigurerAdapter {
                 .authorizedGrantTypes("client_credentials", "password")
                 .scopes("read")
                 .accessTokenValiditySeconds(3600)
-                .resourceIds("sample-oauth");
+                .resourceIds("TOKEN-SERVICE");
     }
 
     @Override

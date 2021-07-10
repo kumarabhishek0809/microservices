@@ -1,118 +1,99 @@
 package com.zull.proxy.filter;
 
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 
 public class OAuthFilter extends ZuulFilter {
 
-    private static Logger log = LoggerFactory.getLogger(OAuthFilter.class);
+	private static Logger log = LoggerFactory.getLogger(OAuthFilter.class);
 
-    public String filterType() {
+	@Autowired
+	private RestTemplate restTemplate;
 
-        return "pre";
-    }
+	public String filterType() {
 
-    public int filterOrder() {
+		return "pre";
+	}
 
-        return 1;
-    }
+	public int filterOrder() {
 
-    public boolean shouldFilter() {
+		return 1;
+	}
 
-        return true;
-    }
+	public boolean shouldFilter() {
 
-    public Object run() {
+		return true;
+	}
 
-        RequestContext requestContext = RequestContext.getCurrentContext();
-        HttpServletRequest request = requestContext.getRequest();
+	public Object run() {
 
-        //Avoid checking for authentication for the token endpoint
-        if(request.getRequestURI().startsWith("/token")){
-            return null;
-        }
+		RequestContext requestContext = RequestContext.getCurrentContext();
+		HttpServletRequest request = requestContext.getRequest();
 
-        //Get the value of the Authorization header.
-        String authHeader = request.getHeader("Authorization");
+		// Avoid checking for authentication for the token endpoint
+		if (request.getRequestURI().startsWith("/token")) {
+			return null;
+		}
 
-        //If the Authorization  header doesn't exist or is not in a valid format.
-        if (StringUtils.isEmpty(authHeader)) {
-            log.error("No auth header found");
-            //Send error to client
-            handleError(requestContext);
-            return null;
-        }
-        else if(authHeader.split("Bearer ").length != 2){ // Executing Throttling Filter
-            log.error("Invalid auth header");
-            //Send error to client
-            handleError(requestContext);
-            return null;
-        }
+		// Get the value of the Authorization header.
+		String authHeader = request.getHeader("Authorization");
 
-        DataOutputStream outputStream = null;
+		// If the Authorization header doesn't exist or is not in a valid format.
+		if (StringUtils.isEmpty(authHeader)) {
+			log.error("No auth header found");
+			// Send error to client
+			handleError(requestContext);
+			return null;
+		} else if (authHeader.split("Bearer ").length != 2) { // Executing Throttling Filter
+			log.error("Invalid auth header");
+			// Send error to client
+			handleError(requestContext);
+			return null;
+		}
 
-        //Get the value of the token by splitting the Authorization header
-        String token = authHeader.split("Bearer ")[1];
+		// Get the value of the token by splitting the Authorization header
+		String token = authHeader.split("Bearer ")[1];
 
-        String oauthServerURL = "http://localhost:8085/oauth/check_token";
+		// https://www.baeldung.com/rest-template
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+		headers.add("Authorization", "Basic YXBwbGljYXRpb24xOmFwcGxpY2F0aW9uMXNlY3JldA==");
+		
+		MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
+		
 
-        try {
-            URL url = new URL(oauthServerURL);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+		HttpEntity<MultiValueMap<String, String>> requestCall = new HttpEntity<>(map, headers);
 
-            connection.setRequestMethod("POST");
-            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-            connection.setRequestProperty("Authorization", "Basic YXBwbGljYXRpb24xOmFwcGxpY2F0aW9uMXNlY3JldA==");
+		ResponseEntity<String> response = restTemplate
+				.postForEntity("http://TOKEN-SERVICE/oauth/check_token?token=" + token, requestCall, String.class);
 
-            String urlParameters = "token=" + token;
+		// If the authorization server doesn't respond with a 200.
+		if (!response.getStatusCode().equals(HttpStatus.OK)) {
+			log.error("Response code from authz server is " + response.getStatusCode());
+			handleError(requestContext);
+		}
 
-            //Send post request to authorization server to validate token
-            connection.setDoOutput(true);
-            outputStream = new DataOutputStream(connection.getOutputStream());
-            outputStream.writeBytes(urlParameters);
+		return null;
+	}
 
-            int responseCode = connection.getResponseCode();
-
-            //If the authorization server doesn't respond with a 200.
-            if (responseCode != 200) {
-                log.error("Response code from authz server is " + responseCode);
-                handleError(requestContext);
-            }
-
-        } catch (MalformedURLException e) {
-            log.error("Malformed URL: " + oauthServerURL, e);
-            handleError(requestContext);
-        } catch (IOException e) {
-            log.error("IOException occurred ", e);
-            handleError(requestContext);
-        } finally {
-            if (outputStream != null) {
-                try {
-                    outputStream.flush();
-                    outputStream.close();
-                } catch (IOException e) {
-                    log.error("Could not close or flush the output stream", e);
-                }
-            }
-        }
-        return null;
-    }
-    private void handleError(RequestContext requestContext) {
-        requestContext.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());
-        requestContext.setResponseBody("{\"error\": true, \"reason\":\"Authentication Failed\"}");
-        requestContext.setSendZuulResponse(false);
-    }
+	private void handleError(RequestContext requestContext) {
+		requestContext.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());
+		requestContext.setResponseBody("{\"error\": true, \"reason\":\"Authentication Failed\"}");
+		requestContext.setSendZuulResponse(false);
+	}
 }

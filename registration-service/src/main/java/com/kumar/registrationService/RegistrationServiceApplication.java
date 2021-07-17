@@ -10,8 +10,6 @@ public class RegistrationServiceApplication {
         SpringApplication.run(RegistrationServiceApplication.class, args);
     }
 
-
-
     public static final String topicExchangeName = "spring-boot-exchange";
     public static final String queueName = "spring-boot";
 

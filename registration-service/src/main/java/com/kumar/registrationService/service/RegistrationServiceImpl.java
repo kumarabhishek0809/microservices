@@ -1,6 +1,6 @@
 package com.kumar.registrationService.service;
 
-import com.kumar.registrationService.dto.SellerDto;
+import com.kumar.registrationService.dto.SellerDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     }
 
     @Override
-    public String addSeller(@RequestBody SellerDto sellerDto) {
+    public String addSeller(@RequestBody SellerDTO sellerDto) {
 
         if (sellerDto.getEmailId() == null || sellerDto.getEmailId().isEmpty()) {
             logger.error("email id which is mandatory field is null/empty");
@@ -41,9 +41,9 @@ public class RegistrationServiceImpl implements RegistrationService {
     }
 
     @Override
-    public List<SellerDto> getSellersList() {
+    public List<SellerDTO> getSellersList() {
 
-        List<SellerDto> sellerList = registrationRepository.getSellerList();
+        List<SellerDTO> sellerList = registrationRepository.getSellerList();
         logger.info("fetching seller list. Total sellers - {}", sellerList.size());
         return sellerList;
     }

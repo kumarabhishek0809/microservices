@@ -1,13 +1,13 @@
 package com.kumar.registrationService.service;
 
-import com.kumar.registrationService.dto.SellerDto;
+import com.kumar.registrationService.dto.SellerDTO;
 
 import java.util.List;
 
 public interface RegistrationService {
 
 
-    String addSeller(SellerDto sellerDto);
+    String addSeller(SellerDTO sellerDto);
 
-    List<SellerDto> getSellersList();
+    List<SellerDTO> getSellersList();
 }

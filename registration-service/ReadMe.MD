@@ -18,3 +18,6 @@ localhost:15672
 docker network create rabbitmq-cluster
 docker network ls
 docker-compose -f docker-compose-rabbit-mq.yaml up -d
+
+
+docker run --name axonserver -p 8024:8024 -p 8124:8124 -v "/home/kumar/Downloads/AxonServer/AxonServer-4.5.4.1/config/data":/data -v "/home/kumar/Downloads/AxonServer/AxonServer-4.5.4.1/config/eventData":/eventData -v "/home/kumar/Downloads/AxonServer/AxonServer-4.5.4.1/config":/config axoniq/axonserver 

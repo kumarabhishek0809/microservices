@@ -17,7 +17,7 @@ public class RegistrationController  {
     private Environment env;
 
     @GetMapping("/number")
-    public ResponseEntity<String> getSellersList() {
+    public ResponseEntity<String> getEnvironmentIP() {
         return new ResponseEntity<>(env.getProperty("local.server.port"), HttpStatus.OK);
     }
 

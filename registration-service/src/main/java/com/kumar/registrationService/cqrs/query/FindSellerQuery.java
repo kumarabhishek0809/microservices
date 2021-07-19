@@ -1,4 +1,4 @@
-package com.kumar.registrationService.query;
+package com.kumar.registrationService.cqrs.query;
 
 public class FindSellerQuery {
 

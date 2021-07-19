@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.kumar.registrationService.dto.Item;
+import com.kumar.registrationService.model.Item;
 
 import lombok.Data;
 

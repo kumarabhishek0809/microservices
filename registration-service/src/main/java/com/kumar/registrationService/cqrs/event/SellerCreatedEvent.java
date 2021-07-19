@@ -1,8 +1,8 @@
-package com.kumar.registrationService.event;
+package com.kumar.registrationService.cqrs.event;
 
 import java.util.List;
 
-import com.kumar.registrationService.dto.Item;
+import com.kumar.registrationService.model.Item;
 
 import lombok.Data;
 

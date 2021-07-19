@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kumar.registrationService.dto.SellerDTO;
+import com.kumar.registrationService.model.SellerRestModel;
 import com.kumar.registrationService.service.RegistrationService;
 
 @RestController
@@ -26,7 +26,7 @@ public class RegistrationController {
 	}
 
 	@GetMapping("/sellersList")
-	public ResponseEntity<List<SellerDTO>> getSellersList() {
+	public ResponseEntity<List<SellerRestModel>> getSellersList() {
 		return new ResponseEntity<>(registrationService.getSellersList(), HttpStatus.OK);
 	}
 

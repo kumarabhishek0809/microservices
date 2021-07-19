@@ -1,16 +1,20 @@
-package com.kumar.registrationService.command.controller;
+package com.kumar.registrationService.cqrs.command.controller;
 
 import java.util.UUID;
 
+import javax.validation.Valid;
+
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kumar.registrationService.command.CreateSellerCommand;
-import com.kumar.registrationService.dto.SellerDTO;
+import com.kumar.registrationService.cqrs.command.CreateSellerCommand;
+import com.kumar.registrationService.model.SellerRestModel;
 import com.kumar.registrationService.service.RegistrationService;
 
 @RestController
@@ -28,8 +32,8 @@ public class SellerCommandController {
 
 	}
 
-	@PostMapping("/addSeller")
-	public String addSeller(@RequestBody SellerDTO sellerDTO) {
+	@PostMapping("/add")
+	public ResponseEntity<String> createSeller(@Valid @RequestBody SellerRestModel sellerDTO) {
 		CreateSellerCommand createSellerCommand = CreateSellerCommand.builder().firstName(sellerDTO.getFirstName()) //
 				.emailId(sellerDTO.getEmailId()) //
 				.lastName(sellerDTO.getLastName()) //
@@ -38,10 +42,9 @@ public class SellerCommandController {
 		try {
 			returnCommandValue = commandGateway.sendAndWait(createSellerCommand);
 		} catch (Exception e) {
-			System.out.println("returnCommandValue"+e);
+			System.out.println("returnCommandValue" + e);
 		}
-		return registrationService.addSeller(sellerDTO) + returnCommandValue;
+		return new ResponseEntity(registrationService.addSeller(sellerDTO) + returnCommandValue, HttpStatus.OK);
 	}
-	
 
 }

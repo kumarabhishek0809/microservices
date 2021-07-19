@@ -1,4 +1,4 @@
-package com.kumar.registrationService.aggregator;
+package com.kumar.registrationService.cqrs.command.handler;
 
 import java.util.List;
 
@@ -9,15 +9,15 @@ import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
 import org.springframework.beans.BeanUtils;
 
-import com.kumar.registrationService.command.CreateSellerCommand;
-import com.kumar.registrationService.dto.Item;
-import com.kumar.registrationService.event.SellerCreatedEvent;
+import com.kumar.registrationService.cqrs.command.CreateSellerCommand;
+import com.kumar.registrationService.cqrs.event.SellerCreatedEvent;
+import com.kumar.registrationService.model.Item;
 
 import lombok.NoArgsConstructor;
 
 @Aggregate
 @NoArgsConstructor
-public class SellerAggregate {
+public class SellerAggregateCommandHandler {
 
 	@AggregateIdentifier
 	private String id;
@@ -27,7 +27,7 @@ public class SellerAggregate {
 	private List<Item> itemsSold;
 
 	@CommandHandler
-	public SellerAggregate(CreateSellerCommand createSellerCommand) {
+	public SellerAggregateCommandHandler(CreateSellerCommand createSellerCommand) {
 		// validate createSellerCommand
 
 		SellerCreatedEvent sellerCreatedEvent = new SellerCreatedEvent();

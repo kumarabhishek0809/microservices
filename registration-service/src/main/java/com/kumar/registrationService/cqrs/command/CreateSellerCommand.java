@@ -1,10 +1,10 @@
-package com.kumar.registrationService.command;
+package com.kumar.registrationService.cqrs.command;
 
 import java.util.List;
 
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
-import com.kumar.registrationService.dto.Item;
+import com.kumar.registrationService.model.Item;
 
 import lombok.Builder;
 import lombok.Data;

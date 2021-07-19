@@ -1,4 +1,4 @@
-package com.kumar.registrationService.dto;
+package com.kumar.registrationService.model;
 
 public class Item {
         private long id;

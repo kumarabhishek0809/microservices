@@ -1,12 +1,12 @@
-package com.kumar.registrationService.query;
+package com.kumar.registrationService.cqrs.event.handler;
 
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.kumar.registrationService.cqrs.event.SellerCreatedEvent;
 import com.kumar.registrationService.entity.SellerEntity;
-import com.kumar.registrationService.event.SellerCreatedEvent;
 import com.kumar.registrationService.repository.SellerRepository;
 
 @Component

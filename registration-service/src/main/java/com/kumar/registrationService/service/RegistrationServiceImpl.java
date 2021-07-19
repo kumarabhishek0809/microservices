@@ -1,12 +1,13 @@
 package com.kumar.registrationService.service;
 
-import com.kumar.registrationService.dto.SellerDTO;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.List;
+import com.kumar.registrationService.model.SellerRestModel;
 
 
 @Service
@@ -20,13 +21,13 @@ public class RegistrationServiceImpl implements RegistrationService {
     }
 
     @Override
-    public String addSeller(@RequestBody SellerDTO sellerDto) {
+    public String addSeller(@RequestBody SellerRestModel sellerDto) {
 
         if (sellerDto.getEmailId() == null || sellerDto.getEmailId().isEmpty()) {
             logger.error("email id which is mandatory field is null/empty");
             throw new RuntimeException("Seller mail id is not valid. Please enter valid Id");
         }
-        sellerDto.setId(getSellersList().size() + 1);
+        sellerDto.setId(""+getSellersList().size() + 1);
         boolean isSellerAdded = registrationRepository.addSeller(sellerDto);
         String message;
         if (isSellerAdded) {
@@ -41,9 +42,9 @@ public class RegistrationServiceImpl implements RegistrationService {
     }
 
     @Override
-    public List<SellerDTO> getSellersList() {
+    public List<SellerRestModel> getSellersList() {
 
-        List<SellerDTO> sellerList = registrationRepository.getSellerList();
+        List<SellerRestModel> sellerList = registrationRepository.getSellerList();
         logger.info("fetching seller list. Total sellers - {}", sellerList.size());
         return sellerList;
     }

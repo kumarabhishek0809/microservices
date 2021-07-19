@@ -1,8 +1,8 @@
-package com.kumar.registrationService.controller.query.model;
+package com.kumar.registrationService.model;
 
 import java.util.List;
 
-import com.kumar.registrationService.dto.Item;
+import javax.validation.constraints.NotBlank;
 
 import lombok.Data;
 
@@ -10,6 +10,8 @@ import lombok.Data;
 public class SellerRestModel {
 	
 	private String id;
+	
+	@NotBlank(message = "First Name is a required Field")
 	private String firstName;
 	private String lastName;
 	private String emailId;

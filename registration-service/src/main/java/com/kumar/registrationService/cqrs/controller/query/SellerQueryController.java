@@ -1,4 +1,4 @@
-package com.kumar.registrationService.controller.query;
+package com.kumar.registrationService.cqrs.controller.query;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kumar.registrationService.controller.query.model.SellerRestModel;
-import com.kumar.registrationService.query.FindSellerQuery;
+import com.kumar.registrationService.cqrs.query.FindSellerQuery;
+import com.kumar.registrationService.model.SellerRestModel;
 
 @RestController
 @RequestMapping("/sellers")

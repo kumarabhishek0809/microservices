@@ -1,5 +1,6 @@
 package com.kumar.registrationService.cqrs.event.handler;
 
+import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import com.kumar.registrationService.entity.SellerEntity;
 import com.kumar.registrationService.repository.SellerRepository;
 
 @Component
+@ProcessingGroup("seller-group")
 public class SellerEventHandler {
 
 	private final SellerRepository sellerRepository;

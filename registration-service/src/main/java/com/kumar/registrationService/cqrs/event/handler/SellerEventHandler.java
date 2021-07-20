@@ -2,6 +2,7 @@ package com.kumar.registrationService.cqrs.event.handler;
 
 import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
+import org.axonframework.messaging.interceptors.ExceptionHandler;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,11 +22,21 @@ public class SellerEventHandler {
 		this.sellerRepository = sellerRepository;
 	}
 
+	@ExceptionHandler(resultType = IllegalArgumentException.class)
+	public void handle(IllegalArgumentException e) {
+
+	}
+
 	@EventHandler
 	public void on(SellerCreatedEvent sellerCreatedEvent) {
 		SellerEntity sellerEntity = new SellerEntity();
 		BeanUtils.copyProperties(sellerCreatedEvent, sellerEntity);
-		sellerRepository.save(sellerEntity);
+		try {
+			sellerRepository.save(sellerEntity);
+		} catch (IllegalArgumentException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 	}
 
 }

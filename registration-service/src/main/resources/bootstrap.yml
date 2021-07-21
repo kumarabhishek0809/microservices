@@ -11,7 +11,7 @@ spring:
   cloud:
     config:
       uri: ${CONFIG_SERVER_URI:http://localhost:7777}
-    fail-fast: true
+      fail-fast: true
   datasource:
     continue-on-error: true
     url: jdbc:h2:file:~/registration;AUTO_SERVER=true

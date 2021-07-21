@@ -1,0 +1,17 @@
+debug: true
+
+server:
+    port: ${SERVER_PORT:7777}
+
+spring:
+    application:
+        name: config-server
+    profiles:
+        active: git
+    cloud:
+        config:
+            server:
+                git:
+                    uri: https://github.com/kumarabhishek0809/ConfigurationProperties.git 
+                    force-pull: true
+                    searchPaths: configuration

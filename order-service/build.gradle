@@ -38,7 +38,7 @@ dependencies {
 
 group = 'com.kumar.microservices'
 version = '0.0.1-SNAPSHOT'
-description = 'cqrs-example'
+description = 'order-service'
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 publishing {

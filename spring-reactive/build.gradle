@@ -33,48 +33,48 @@ ext {
 dependencies {
 
     //Spring Starter
-    compile('org.springframework.cloud:spring-cloud-starter-config')
+    implementation('org.springframework.cloud:spring-cloud-starter-config')
 
     //Spring Cloud
-    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
-    compile('org.springframework.cloud:spring-cloud-netflix-core')
+    implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+    implementation('org.springframework.cloud:spring-cloud-netflix-core')
 
     //For distributed logging
-    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
-    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
 
     //spring reactive
     implementation('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
     implementation('org.springframework.boot:spring-boot-starter-webflux')
-    compileOnly('org.projectlombok:lombok')
+    implementation('org.projectlombok:lombok')
     annotationProcessor("org.projectlombok:lombok")
     testAnnotationProcessor("org.projectlombok:lombok")
 
     //Testing
-    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    implementation('org.springframework.boot:spring-boot-starter-test')
     //this is the one which creates mongo DB instance while running test case.
-    testImplementation('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
-    testImplementation('io.projectreactor:reactor-test')
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+    implementation('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
+    implementation('io.projectreactor:reactor-test')
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    implementation  'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 
-    compile('org.springframework.boot:spring-boot-starter-actuator')
-    compile('org.springframework.boot:spring-boot-starter-aop')
+    implementation('org.springframework.boot:spring-boot-starter-actuator')
+    implementation('org.springframework.boot:spring-boot-starter-aop')
 
     //Fallback Methods.
-    compile("io.github.resilience4j:resilience4j-spring-boot2:${resilience4jVersion}")
-    compile("io.github.resilience4j:resilience4j-all:${resilience4jVersion}")
-    compile("io.github.resilience4j:resilience4j-reactor:${resilience4jVersion}")
-    compile("io.github.resilience4j:resilience4j-timelimiter:${resilience4jVersion}")
-    compile("io.github.resilience4j:resilience4j-circuitbreaker:${resilience4jVersion}")
+    implementation("io.github.resilience4j:resilience4j-spring-boot2:${resilience4jVersion}")
+    implementation("io.github.resilience4j:resilience4j-all:${resilience4jVersion}")
+    implementation("io.github.resilience4j:resilience4j-reactor:${resilience4jVersion}")
+    implementation("io.github.resilience4j:resilience4j-timelimiter:${resilience4jVersion}")
+    implementation("io.github.resilience4j:resilience4j-circuitbreaker:${resilience4jVersion}")
 
 
     //for Data Capturing and monitoring
-    compile("io.micrometer:micrometer-registry-prometheus")
+    implementation("io.micrometer:micrometer-registry-prometheus")
 
-    compile 'de.codecentric:chaos-monkey-spring-boot:2.1.1'
-    compile("io.vavr:vavr-jackson:0.10.0")
-    testCompile('io.projectreactor:reactor-test')
+    implementation 'de.codecentric:chaos-monkey-spring-boot:2.1.1'
+    implementation("io.vavr:vavr-jackson:0.10.0")
+    implementation('io.projectreactor:reactor-test')
 }
 
 test {

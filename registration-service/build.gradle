@@ -71,6 +71,7 @@ dependencies {
 	implementation("org.projectlombok:lombok:${lombokVersion}")
     annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
     testAnnotationProcessor("org.projectlombok:lombok:${lombokVersion}")
+    
     implementation 'io.holixon.axon:axon-framework-bom:4.4.8'
     implementation 'org.axonframework:axon-spring-boot-starter:4.5.3'
 	implementation group: 'com.google.guava', name: 'guava', version: '30.1.1-jre'

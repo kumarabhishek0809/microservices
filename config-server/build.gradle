@@ -44,26 +44,26 @@ bootJar {
 
 dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-config-server'
-	compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('org.springframework.boot:spring-boot-starter-actuator')
-	compile('org.springframework.boot:spring-boot-starter-test')
-    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-feign', version: '1.4.7.RELEASE'
-	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
-	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
+	implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
+	implementation('org.springframework.boot:spring-boot-starter-web')
+	implementation('org.springframework.boot:spring-boot-starter-actuator')
+	implementation('org.springframework.boot:spring-boot-starter-test')
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-feign', version: '1.4.7.RELEASE'
+	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
+	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
 
 
 	//java 9+ does not have Jax B Dependents
-	compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
-	compile group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0'
-	compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.0'
-	compile group: 'javax.activation', name: 'activation', version: '1.1.1'
-	testCompile "org.junit.jupiter:junit-jupiter-engine:${junitVersion}",
+	implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
+	implementation group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0'
+	implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.0'
+	implementation group: 'javax.activation', name: 'activation', version: '1.1.1'
+	implementation "org.junit.jupiter:junit-jupiter-engine:${junitVersion}",
 			"org.junit.jupiter:junit-jupiter-api:${junitVersion}",
 			"org.junit.platform:junit-platform-launcher:${junitPlatformVersion}"
 
 	//swagger
-	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
 	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
 }
 

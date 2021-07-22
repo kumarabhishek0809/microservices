@@ -34,24 +34,24 @@ ext {
 }
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter-web')
-    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
-    compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix')
-    compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix-dashboard')
-    compile('org.springframework.cloud:spring-cloud-starter-netflix-ribbon')
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+    implementation('org.springframework.cloud:spring-cloud-starter-netflix-hystrix')
+    implementation('org.springframework.cloud:spring-cloud-starter-netflix-hystrix-dashboard')
+    implementation('org.springframework.cloud:spring-cloud-starter-netflix-ribbon')
+    implementation('org.springframework.boot:spring-boot-starter-test')
 
-    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
-    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth'
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
     //FOR CONFIG SERVER
-    compile 'org.springframework.cloud:spring-cloud-starter-config'
-    compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
-    compile('org.springframework.boot:spring-boot-starter-actuator')
-    compile 'org.springframework.cloud:spring-cloud-starter-openfeign'
-    compile('org.springframework.boot:spring-boot-starter-aop')
-    compile('org.springframework.retry:spring-retry')
-    testCompile "org.junit.jupiter:junit-jupiter-engine:${junitVersion}",
+    implementation('org.springframework.boot:spring-boot-starter-actuator')
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation('org.springframework.boot:spring-boot-starter-aop')
+    implementation('org.springframework.retry:spring-retry')
+    implementation "org.junit.jupiter:junit-jupiter-engine:${junitVersion}",
             "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
             "org.junit.platform:junit-platform-launcher:${junitPlatformVersion}"
 }
